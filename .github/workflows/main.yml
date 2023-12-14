@@ -1,0 +1,32 @@
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Build and Test
+        run: |
+          # Add your build and test commands here
+
+version: '3'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: namdev746/your-image-name
+    ports:
+      - 8080:8080
+    environment:
+      - VARIABLE_NAME=ubuntu-latest
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
