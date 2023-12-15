@@ -1,4 +1,6 @@
-FROM python:3.9
-COPY . /app
+FROM ubuntu:20.04
+RUN apt-get update && apt-get install -y python3 python3-pip
 WORKDIR /app
-CMD ["python", "hello.py"]
+COPY hello.py .
+CMD [ "python3", "hello.py" ]
+
